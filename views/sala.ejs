@@ -1,0 +1,47 @@
+<!-- views/sala.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Sala: <%= sala.codigo %></title>
+</head>
+<body>
+  <h1>Sala: <%= sala.codigo %> (<%= sala.privada ? 'Privada' : 'Pública' %>)</h1>
+  <h2>Participantes:</h2>
+  <ul id="participantes-lista">
+    <% sala.participantes.forEach(participante => { %>
+      <li><%= participante.nombre %> - <%= participante.respuesta || 'Sin respuesta' %></li>
+    <% }); %>
+  </ul>
+  <form id="formulario-respuesta">
+    <label for="respuesta">Tu Respuesta:</label>
+    <input type="text" id="respuesta" name="respuesta" required>
+    <button type="button" onclick="enviarRespuesta('<%= sala.codigo %>')">Enviar Respuesta</button>
+  </form>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    socket.on('actualizar-participantes', (participantes) => {
+      const participantesLista = document.getElementById('participantes-lista');
+      participantesLista.innerHTML = '';
+      participantes.forEach(participante => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${participante.nombre} - ${participante.respuesta || 'Sin respuesta'}`;
+        participantesLista.appendChild(listItem);
+      });
+    });
+
+    function enviarRespuesta(salaCodigo) {
+      const nombre = prompt('Tu nombre:');
+      const respuesta = document.getElementById('respuesta').value;
+
+      socket.emit('enviar-respuesta', { salaCodigo, nombre, respuesta });
+    }
+  </script>
+</body>
+</html>
+
