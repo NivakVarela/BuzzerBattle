@@ -1,0 +1,41 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Salas Disponibles</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('/image/fondo.jpg'); /* Reemplaza con la ruta de tu imagen */
+        background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+        background-position: center; /* Centra la imagen en el fondo */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
+
+    /* Agrega más estilos según sea necesario */
+</style>
+</head>
+<body>
+  <!--se inicia div del fondo-->
+  <div class="fondo">
+  <h1>Salas Disponibles</h1>
+  <ul>
+    <% salas.forEach(sala => { %>
+      <li><a href="/sala/<%= sala.codigo %>"><%= sala.codigo %> (<%= sala.privada ? 'Privada' : 'Pública' %>)</a></li>
+    <% }); %>
+  </ul>
+  <form action="/crear-sala" method="post">
+    <label for="codigo">Código de Sala:</label>
+    <input type="text" id="codigo" name="codigo" required>
+    <label for="privada">Privada:</label>
+    <input type="checkbox" id="privada" name="privada">
+    <button type="submit">Crear Sala</button>
+  </form>
+
+</div> <!--se finaliza div del fondo -->
+</body>
+</html>
