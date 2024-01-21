@@ -1,5 +1,74 @@
-.fondo{
-    background-image: url('../image/fondo.jpg'); /* Ruta de la imagen */
-    
+body {
+  height: 100%;
+  background-image: url('/images/fondo.jpg');
+  background-position: center; /* Centra la imagen en el fondo */
+ 
+}
+
+.buttonRoomPublic {
+  position: center;
+  font-family: 'Frijole', system-ui;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Grape Nuts', cursive;
+  font-family: 'Rock Salt', cursive;
+  font-size: 35px;
+  margin-top: 500px;
+  background-color: #000;
+  color: #fff;
+  width: 500px;
+  height: 60px;
+  line-height: 5px;
+  border: none;
+  transform: rotate(5deg); /* Gira el botón 5 grados */
+  cursor: pointer;
+  transition: transform 0.2s ease-out; /* Agrega una transición suave a la propiedad transform */
+}
+.buttonJoinRoom {
+  position: center;
+  font-family: 'Frijole', system-ui;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Grape Nuts', cursive;
+  font-family: 'Rock Salt', cursive;
+  font-size: 35px;
+  margin-top: 65px;
+  background-color: #000;
+  color: #fff;
+  width: 500px;
+  height: 60px;
+  line-height: 5px;
+  border: none;
+  transform: rotate(3deg); /* Gira el botón 5 grados */
+  cursor: pointer;
+  transition: transform 0.2s ease-out; /* Agrega una transición suave a la propiedad transform */
+}
+
+.buttonRoomCreate {
+  position: center;
+  font-family: 'Frijole', system-ui;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Grape Nuts', cursive;
+  font-family: 'Rock Salt', cursive;
+  font-size: 35px;
+  margin-top: 65px;
+  background-color: #000;
+  color: #fff;
+  width: 500px;
+  height: 60px;
+  line-height: 5px;
+  border: none;
+  transform: rotate(-5deg); /* Gira el botón 5 grados */
+  cursor: pointer;
+  transition: transform 0.2s ease-out; /* Agrega una transición suave a la propiedad transform */
+}
+
+.buttonRoomPublic:hover {
+  transform: rotate(10deg) translate(2px, 2px); /* Aplica una pequeña vibración al pasar el mouse sobre el botón */
+}
+
+.buttonRoomCreate:hover {
+  transform: rotate(-10deg) translate(-2px, -2px); /* Aplica una pequeña vibración al pasar el mouse sobre el botón */
+}
+.buttonJoinRoom:hover {
+  transform: rotate(-10deg) translate(-2px, -2px); /* Aplica una pequeña vibración al pasar el mouse sobre el botón */
 }
 
